@@ -64,7 +64,8 @@ function CardDeck() {
 
     })
 
-    );} catch (err) {
+    );
+      } catch (err) {
       alert("There are no cards left in the deck.");
     }
 
