@@ -1,7 +1,9 @@
+import React from "react";
+import Card from "./Card";
 
-/**
- * props:
- * -card object like: {
+/** Function to render a card list component.
+ *
+ * Props: an array of card objects, like: [{
             "code": "6H",
             "image": "https://deckofcardsapi.com/static/img/6H.png",
             "images": {
@@ -10,14 +12,15 @@
                       },
             "value": "6",
             "suit": "HEARTS"
-        }
+        } ...]
+ *
  */
-function Card({card}) {
+function CardList({cards}) {
   return (
-    <div className="Card">
-      <img className="Card-img" src={card.image}/>
+    <div className="CardList">
+      {cards.map(card => (<Card key={card.code} card={card}/>))}
     </div>
-  );
+  )
 }
 
-export default Card;
+export default CardList;
