@@ -47,14 +47,15 @@ function CardDeck() {
   // }, []);
 
   async function cardFetcher() {
-    if (deckData.cardsLeft === 0) {
-      //TODO: try, catch, display alert.
-      throw new Error("The deck is empty");
-      // alert("There are no cards left!");
-      // setDeckData(d => ({ ...d }));
-    }
+    // if (deckData.cardsLeft === 0) {
+    //   //TODO: try, catch, display alert.
+    //   throw new Error("The deck is empty");
+    //   // alert("There are no cards left!");
+    //   // setDeckData(d => ({ ...d }));
+    // }
 
-    const response = await fetch(`${BASE_API_URL}/${deckData.id}/draw/?count=1`);
+    try {
+    const response = await fetch(`${BASE_API_URL}/${deckData.id}/draw/?count=52`);
     const data = await response.json();
     setDeckData( d => ({
       ...d,
@@ -63,7 +64,9 @@ function CardDeck() {
 
     })
 
-    );
+    );} catch (err) {
+      alert("There are no cards left in the deck.");
+    }
 
   }
 
